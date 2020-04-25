@@ -20,5 +20,4 @@ jobs:
     - name: Build with Gradle
       run: |
           chmod 777 ./gradlew
-          ./gradlew build
-          ./gradlew assembleDebug
+          ./gradlew compileDebug --stacktrace
