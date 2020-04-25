@@ -20,8 +20,12 @@ jobs:
       env:
        JAVA_HOME: C:\hostedtoolcache\windows\jdk\8.0.252\x64
        JAVA_HOME_8.0.252_x64: C:\hostedtoolcache\windows\jdk\8.0.252\x64
+     
+    - name: Setting HOME
+      run:  setx JAVA_HOME -m $JAVA_HOME
+      
     - name: Gradle test
-      run:  gradlew test $JAVA_HOME $JAVA_HOME_8.0.252_x64
+      run:  gradlew test 
    
               
       
