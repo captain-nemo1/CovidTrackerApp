@@ -19,6 +19,6 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: |
-          chmod +x ./gradlew
+          chmod 777 ./gradlew
           ./gradlew build
           ./gradlew assembleDebug
