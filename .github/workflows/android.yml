@@ -20,7 +20,8 @@ jobs:
       env:
          JAVA_HOME: C:\hostedtoolcache\windows\jdk\8.0.252\x64
          JAVA_HOME_8.0.252_x64: C:\hostedtoolcache\windows\jdk\8.0.252\x64
-      
+         with:
+               ${{ github.workspace }}
     - name: Gradle test
       run:  gradlew test
       
