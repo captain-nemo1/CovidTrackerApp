@@ -16,15 +16,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-   
-    - name: Make Gradle Executable
-      run:  chmod +x ./gradlew
       
     - name: Gradle test
-      run:  ./gradlew test
+      run:  gradlew test
       
     - name: Build with Gradle
-      run: ./gradlew build
+      run: gradlew build
       
     - name: Build Debug APK
-      run: ./gradlew assembleDebug
+      run: gradlew assembleDebug
