@@ -22,7 +22,9 @@ jobs:
        JAVA_HOME_8.0.252_x64: C:\hostedtoolcache\windows\jdk\8.0.252\x64
      
     - name: Setting HOME
-      run:  setx JAVA_HOME -m $JAVA_HOME
+      run: |
+            setx -m JAVA_HOME $JAVA_HOME
+            setx -m PATH "%PATH%;%JAVA_HOME%\bin"      
       
     - name: Gradle test
       run:  gradlew test 
