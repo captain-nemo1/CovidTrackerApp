@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/india"
+        android:title="India"
+        android:icon="@drawable/indiaflag2"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/world"
+        android:icon="@drawable/world"
+        android:title="World"
+        app:showAsAction="always" />
+
+</menu>
