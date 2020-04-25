@@ -16,22 +16,19 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-         
-    - name: Gradle test
-      run:  gradlew test
+        
       env:
-        JAVA_HOME: C:\hostedtoolcache\windows\jdk\8.0.252\x64
-        JAVA_HOME_8.0.252_x64: C:\hostedtoolcache\windows\jdk\8.0.252\x64:  
+       JAVA_HOME: C:\hostedtoolcache\windows\jdk\8.0.252\x64
+       JAVA_HOME_8.0.252_x64: C:\hostedtoolcache\windows\jdk\8.0.252\x64
+    - name: Gradle test
+      run:  gradlew test $JAVA_HOME $JAVA_HOME_8.0.252_x64
+   
               
       
     - name: Build with Gradle
       run: gradlew build
-      env:
-         JAVA_HOME: C:\hostedtoolcache\windows\jdk\8.0.252\x64
-         JAVA_HOME_8.0.252_x64: C:\hostedtoolcache\windows\jdk\8.0.252\x64
+    
       
     - name: Build Debug APK
       run: gradlew assembleDebug
-      env:
-         JAVA_HOME: C:\hostedtoolcache\windows\jdk\8.0.252\x64
-         JAVA_HOME_8.0.252_x64: C:\hostedtoolcache\windows\jdk\8.0.252\x64
+      
