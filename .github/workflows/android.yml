@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-16.04
+    runs-on: mac-latest
     steps:
     - uses: actions/checkout@v2
     - name: set up JDK 1.8
