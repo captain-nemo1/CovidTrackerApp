@@ -17,8 +17,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Run Android Linter
-      run: ./gradlew lintStagingDebug
+    - name: Build with Gradle
       
-    - name: Assemble Debug APK
-      run: ./gradlew assembleDebug
+      run: chmod +x gradlew 
+           ./gradlew build
