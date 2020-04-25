@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -22,10 +22,10 @@ jobs:
       run: chmod +x ./gradlew
       
     - name: Gradle test
-      run: bash ./gradlew test
+      run:  ./gradlew test
       
     - name: Build with Gradle
-      run: bash ./gradlew build
+      run: ./gradlew build
       
     - name: Build Debug APK
-      run: bash ./gradlew assembleDebug
+      run: ./gradlew assembleDebug
