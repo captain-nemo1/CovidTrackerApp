@@ -1,6 +1,6 @@
-Covid Tracker Made with Apis from <br/>
+Covid Tracker Made with Api's from <br/>
 Covid19India.org<br/>
-Covid.lmao.ninja<br/>
+Corona.lmao.ninja<br/>
 This Project is in no way associated with them. Though I am thankful to them for their hard work<br/>
 <p>
   <img src="https://github.com/captain-nemo1/CovidTrackerApp/blob/master/AppPhotos/dark1.jpg" width="200" title="hover text">
