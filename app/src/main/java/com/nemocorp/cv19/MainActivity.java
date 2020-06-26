@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         ctx=getApplicationContext();
         variables.main_list=findViewById(R.id.list);
         bv=findViewById(R.id.bottom_navigation);
-        stuff_to_do();
+        //stuff_to_do();
         onclick();
         bv.setSelectedItemId(R.id.india);
         bv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("No Internet");
         alertDialog.setMessage("Turn on Internet");
-
+        alertDialog.setCancelable(false);
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -182,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
                 List<String> temp3=new ArrayList<>();
                 List<String>temp4=new ArrayList<>();
                 List<String>temp5=new ArrayList<>();
+                List<String> temp6=new ArrayList<>();
+                List<String>temp7=new ArrayList<>();
+                List<String>temp8=new ArrayList<>();
                 variables.temp4.clear();
                 for(int i=0;i<variables.states.size();i++) {
                     String temp1=variables.states.get(i);
@@ -191,13 +194,16 @@ public class MainActivity extends AppCompatActivity {
                         temp3.add(variables.confirmed.get(i));
                         temp4.add(variables.recovered.get(i));
                         temp5.add(variables.death.get(i));
+                        temp6.add(variables.confirmed_inc.get(i));
+                        temp7.add(variables.death_inc.get(i));
+                        temp8.add(variables.recovered_inc.get(i));
                         variables.temp4.add(i);
                     }
                 }
                 if(variables.temp4.size()<0 || variables.temp4.size()==variables.states.size())
                 { create_list();}
                 else
-                {myAdapter madapter=new myAdapter(MainActivity.this,temp, temp5,temp4,temp3,temp2);
+                {myAdapter madapter=new myAdapter(MainActivity.this,temp, temp5,temp4,temp3,temp2,temp6,temp7,temp8);
                     madapter.notifyDataSetChanged();
                     variables.main_list.setAdapter(madapter);}
                 return false;
@@ -206,16 +212,20 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
     public void isInternetAvailable() {
-        try {
+       try {
                 final String command = "ping -c 1 google.com";
                 boolean k= Runtime.getRuntime().exec(command).waitFor() == 0;
                 if(!k)
+                {
                     internet_check_dialog();
-                else if(!run)
+                }
+                else if(!run) {
                     stuff_to_do();
+                }
         } catch (Exception e) {
             internet_check_dialog();
         }
+      //stuff_to_do();
     }
     public void onclick() //list element click
     {
@@ -234,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
                             new Get_Data_District().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, variables.states.get(position));
                             variables.main_list.setClickable(false);
                         }
+                        else
+                            variables.main_list_clicked=false;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -245,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
     static public void create_list()
     {
         myAdapter adapter=new myAdapter(variables.activity, variables.states,variables.death,variables.recovered,
-                variables.confirmed,variables.active);
+                variables.confirmed,variables.active,variables.confirmed_inc,variables.death_inc,variables.recovered_inc);
         adapter.notifyDataSetChanged();
         variables.main_list.setAdapter(adapter);
     }
@@ -256,6 +268,9 @@ public class MainActivity extends AppCompatActivity {
         variables.dis_death.clear();
         variables.dis_confirmed.clear();
         variables.dis_active.clear();
+        variables.dis_recovered_inc.clear();
+        variables.dis_death_inc.clear();
+        variables.dis_confirmed_inc.clear();
     }
     static public void clear_world()
     {
@@ -264,6 +279,9 @@ public class MainActivity extends AppCompatActivity {
         variables.world_death.clear();
         variables.world_confirmed.clear();
         variables.world_active.clear();
+        variables.world_confirmed_inc.clear();
+        variables.world_recovered_inc.clear();
+        variables.world_death_inc.clear();
     }
     static public void clear_state()
     {
@@ -272,6 +290,10 @@ public class MainActivity extends AppCompatActivity {
         variables.death.clear();
         variables.confirmed.clear();
         variables.active.clear();
+        variables.recovered_inc.clear();
+        variables.death_inc.clear();
+        variables.active_inc.clear();
+        variables.confirmed_inc.clear();
     }
     static public void start_district(){
         Intent i=new Intent(ctx,district.class);
@@ -338,6 +360,12 @@ class Get_Data_State extends AsyncTask<String,Void,String>{
                 variables.recovered.add(temp);
                 temp=js1.optString("statecode");
                 variables.state_code.add(temp);
+                temp=js1.optString("deltaconfirmed");
+                variables.confirmed_inc.add(temp);
+                temp=js1.optString("deltadeaths");
+                variables.death_inc.add(temp);
+                temp=js1.optString("deltarecovered");
+                variables.recovered_inc.add(temp);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -409,6 +437,10 @@ class Get_Data_District extends AsyncTask<String,Void,String>
                 variables.dis_confirmed.add(obj.optString("confirmed"));
                 variables.dis_death.add(obj.optString("deceased"));
                 variables.dis_recovered.add(obj.optString("recovered"));
+                JSONObject delta=new JSONObject(obj.optString("delta"));
+                variables.dis_confirmed_inc.add(delta.optString("confirmed"));
+                variables.dis_death_inc.add(delta.optString("deceased"));
+                variables.dis_recovered_inc.add(delta.optString("recovered"));
             }
         } catch (JSONException e) {
             Log.d("values",e+"");
@@ -463,6 +495,9 @@ class Get_Data_World extends AsyncTask<String,Void,String>{
             int total_active=0;
             int total_death=0;
             int total_confirmed=0;
+            int total_recovered_inc=0;
+            int total_death_inc=0;
+            int total_confirmed_inc=0;
             MainActivity.clear_world();
             Log.d("values",s);
             try {
@@ -474,16 +509,25 @@ class Get_Data_World extends AsyncTask<String,Void,String>{
                     variables.world_death.add(obj.optString("deaths"));
                     variables.world_confirmed.add(obj.optString("cases"));
                     variables.world_active.add(obj.optString("active"));
+                    variables.world_confirmed_inc.add(obj.optString("todayCases"));
+                    variables.world_death_inc.add(obj.optString("todayDeaths"));
+                    variables.world_recovered_inc.add(obj.optString("todayRecovered"));
                     total_recovered+=Integer.parseInt(obj.optString("recovered"));
                     total_active+=Integer.parseInt(obj.optString("active"));
                     total_confirmed+=Integer.parseInt(obj.optString("cases"));
                     total_death+=Integer.parseInt(obj.optString("deaths"));
+                    total_recovered_inc+=Integer.parseInt(obj.optString("todayRecovered"));
+                    total_confirmed_inc+=Integer.parseInt(obj.optString("todayCases"));
+                    total_death_inc+=Integer.parseInt(obj.optString("todayDeaths"));
                 }
                 variables.world.add(0,"Total");
                 variables.world_recovered.add(0,String.valueOf(total_recovered));
                 variables.world_death.add(0,String.valueOf(total_death));
                 variables.world_active.add(0,String.valueOf(total_active));
                 variables.world_confirmed.add(0,String.valueOf(total_confirmed));
+                variables.world_confirmed_inc.add(0,String.valueOf(total_confirmed_inc));
+                variables.world_recovered_inc.add(0,String.valueOf(total_recovered_inc));
+                variables.world_death_inc.add(0,String.valueOf(total_death_inc));
                 variables.world_list_made=true;
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,7 +41,16 @@
             app:autoSizeTextType="uniform"
             android:layout_height="wrap_content"
             android:textAlignment="center"/>
-
+        <TextView
+            android:id="@+id/textView_inc"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/textView"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            app:autoSizeTextType="uniform"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,6 +79,20 @@
             android:textColor="@color/grey"
             app:autoSizeTextType="uniform" />
         <TextView
+            android:id="@+id/dead_increase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dead"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/recovered"
+            android:textAlignment="center"
+            android:justificationMode="inter_word"
+            android:layout_marginEnd="2dp"
+            android:textSize="15sp"
+            android:textColor="@color/grey"
+            app:autoSizeTextType="uniform"
+            />
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
@@ -79,6 +103,18 @@
         android:textColor="@color/green"
         android:id="@+id/recovered"
         />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recovered"
+            android:layout_centerHorizontal="true"
+            android:textSize="15sp"
+            app:autoSizeTextType="uniform"
+            android:textColor="@color/green"
+            android:id="@+id/recovered_increase"
+            android:justificationMode="inter_word"
+
+            />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

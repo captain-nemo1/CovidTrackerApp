@@ -49,6 +49,9 @@ public class district extends AppCompatActivity {
                 List<String> temp3=new ArrayList<>();
                 List<String>temp4=new ArrayList<>();
                 List<String>temp5=new ArrayList<>();
+                List<String> temp6=new ArrayList<>();
+                List<String>temp7=new ArrayList<>();
+                List<String>temp8=new ArrayList<>();
                 variables.temp4.clear();
                 for(int i=0;i<variables.dis.size();i++) {
                     String temp1=variables.dis.get(i);
@@ -58,13 +61,16 @@ public class district extends AppCompatActivity {
                         temp3.add(variables.dis_confirmed.get(i));
                         temp4.add(variables.dis_recovered.get(i));
                         temp5.add(variables.dis_death.get(i));
+                        temp6.add(variables.dis_confirmed_inc.get(i));
+                        temp7.add(variables.dis_death_inc.get(i));
+                        temp8.add(variables.dis_recovered_inc.get(i));
                         variables.temp4.add(i);
                     }
                 }
                 if(variables.temp4.size()<0 || variables.temp4.size()==variables.states.size())
                 { create_list();}
                 else
-                {myAdapter madapter=new myAdapter(district.this,temp, temp5,temp4,temp3,temp2);
+                {myAdapter madapter=new myAdapter(district.this,temp, temp5,temp4,temp3,temp2,temp6,temp7,temp8);
                     madapter.notifyDataSetChanged();
                     variables.dis_list.setAdapter(madapter);}
                 return false;
@@ -75,7 +81,7 @@ public class district extends AppCompatActivity {
     public void create_list()
     {
         myAdapter adapter=new myAdapter(this, variables.dis,variables.dis_death,variables.dis_recovered,
-                variables.dis_confirmed,variables.dis_active);
+                variables.dis_confirmed,variables.dis_active,variables.dis_confirmed_inc,variables.dis_death_inc,variables.dis_recovered_inc);
         adapter.notifyDataSetChanged();
         variables.dis_list.setAdapter(adapter);
     }

@@ -105,6 +105,9 @@ public class world extends AppCompatActivity {
                 List<String> temp3=new ArrayList<>();
                 List<String>temp4=new ArrayList<>();
                 List<String>temp5=new ArrayList<>();
+                List<String> temp6=new ArrayList<>();
+                List<String>temp7=new ArrayList<>();
+                List<String>temp8=new ArrayList<>();
                 variables.temp4.clear();
                 for(int i=0;i<variables.world.size();i++) {
                     String temp1=variables.world.get(i);
@@ -114,13 +117,16 @@ public class world extends AppCompatActivity {
                         temp3.add(variables.world_confirmed.get(i));
                         temp4.add(variables.world_recovered.get(i));
                         temp5.add(variables.world_death.get(i));
+                        temp6.add(variables.world_confirmed_inc.get(i));
+                        temp7.add(variables.world_death_inc.get(i));
+                        temp8.add(variables.world_recovered_inc.get(i));
                         variables.temp4.add(i);
                     }
                 }
                 if(variables.temp4.size()<0 || variables.temp4.size()==variables.states.size())
                 { create_list();}
                 else
-                {myAdapter madapter=new myAdapter(world.this,temp, temp5,temp4,temp3,temp2);
+                {myAdapter madapter=new myAdapter(world.this,temp, temp5,temp4,temp3,temp2,temp6,temp7,temp8);
                     madapter.notifyDataSetChanged();
                     variables.world_list.setAdapter(madapter);}
                 return false;
@@ -131,7 +137,7 @@ public class world extends AppCompatActivity {
     static public void create_list()
     {
         myAdapter adapter=new myAdapter(world_activity, variables.world,variables.world_death,variables.world_recovered,
-                variables.world_confirmed,variables.world_active);
+                variables.world_confirmed,variables.world_active,variables.world_confirmed_inc,variables.world_death_inc,variables.world_recovered_inc);
         adapter.notifyDataSetChanged();
         variables.world_list.setAdapter(adapter);
     }
