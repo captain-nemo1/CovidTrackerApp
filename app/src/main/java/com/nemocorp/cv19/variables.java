@@ -46,7 +46,6 @@ public class variables {
     static ListView main_list;
     static ListView dis_list;
     static ListView world_list;
-    static boolean backpressed=true;//used to create state list again if activity was stopped
     static boolean world_list_made=false;//used to create world list as soon as loading is done
     static ArrayList<Integer> temp4=new ArrayList<>();//for searched item original index
     static boolean main_list_clicked=false; //to make sure main_list item is clicked once and only starts one activty

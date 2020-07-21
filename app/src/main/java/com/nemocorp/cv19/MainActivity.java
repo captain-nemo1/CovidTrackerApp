@@ -89,10 +89,6 @@ public class MainActivity extends AppCompatActivity {
     public void onResume()
     {
         bv.setSelectedItemId(R.id.india);
-        if(variables.backpressed) {//if dont place this then after closing app through back press and then open wont show list
-            create_list();
-            variables.backpressed=false;
-        }
         variables.main_list_clicked=false;
         super.onResume();
     }
@@ -121,14 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        variables.backpressed=true;//when app opened after back press from main need to recreate list
-        super.onBackPressed();
-    }
-    @Override
-    public void onStop()
-    {
-        variables.backpressed=true;//when app opened after onStop need to recreate list
-        super.onStop();
+      moveTaskToBack(true);
     }
     public void stuff_to_do() //running async task for state data and world data
     {
