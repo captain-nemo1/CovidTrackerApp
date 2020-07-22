@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="com.nemoco" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="oncreate" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -41,7 +41,7 @@
     </option>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="C:\Users\Atul\Desktop\signed\signed2\signed.jks" />
+    <option name="KEY_STORE_PATH" value="C:\Users\Agarwal\Desktop\Covid_New" />
     <option name="KEY_ALIAS" value="key0" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -61,7 +61,7 @@
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/signed/Covid_New" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -184,26 +184,30 @@
     </todo-panel>
   </component>
   <component name="WindowStateProjectService">
-    <state x="527" y="16" key="FileChooserDialogImpl" timestamp="1595364985253">
+    <state x="527" y="16" key="FileChooserDialogImpl" timestamp="1595437227958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="527" y="16" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595364985253" />
-    <state width="1340" height="184" key="GridCell.Tab.0.bottom" timestamp="1595364797476">
+    <state x="527" y="16" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595437227958" />
+    <state width="1026" height="152" key="GridCell.Tab.0.bottom" timestamp="1595437196592">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1340" height="184" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595364797476" />
-    <state width="1340" height="184" key="GridCell.Tab.0.center" timestamp="1595364797476">
+    <state width="1026" height="152" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595437196592" />
+    <state width="1026" height="152" key="GridCell.Tab.0.center" timestamp="1595437196592">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1340" height="184" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595364797476" />
-    <state width="1340" height="184" key="GridCell.Tab.0.left" timestamp="1595364797475">
+    <state width="1026" height="152" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595437196592" />
+    <state width="1026" height="152" key="GridCell.Tab.0.left" timestamp="1595437196592">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1340" height="184" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595364797475" />
-    <state width="1340" height="184" key="GridCell.Tab.0.right" timestamp="1595364797476">
+    <state width="1026" height="152" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595437196592" />
+    <state width="1026" height="152" key="GridCell.Tab.0.right" timestamp="1595437196592">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1340" height="184" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595364797476" />
+    <state width="1026" height="152" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595437196592" />
+    <state x="463" y="144" width="609" height="536" key="find.popup" timestamp="1595435827506">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="144" width="609" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1595435827506" />
   </component>
   <component name="masterDetails">
     <states>

@@ -40,6 +40,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -47,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
     static boolean run=false;
     ImageView toggle;
     BottomNavigationView bv;
+    static myAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sh=getSharedPreferences("MODE",MODE_PRIVATE);//for getting the last mode set
-        int k=Integer.parseInt(sh.getString("mode","1"));
+        int k=Integer.parseInt(Objects.requireNonNull(sh.getString("mode", "1")));
         AppCompatDelegate.setDefaultNightMode(k);
-        startActivity(new Intent(MainActivity.this,Splash.class));//start splash screen
+        startActivity(new Intent(MainActivity.this,Splash.class));//start splash *screen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toggle=findViewById(R.id.mode);
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         ctx=getApplicationContext();
         variables.main_list=findViewById(R.id.list);
         bv=findViewById(R.id.bottom_navigation);
-        //stuff_to_do();
         onclick();
         bv.setSelectedItemId(R.id.india);
         bv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -109,10 +110,11 @@ public class MainActivity extends AppCompatActivity {
                 recreate();
                 break;
         }
+        run=false;//need to do this else on recreate() when it goes to the isinternetAvailble then doesn't create list.
         SharedPreferences sh=getSharedPreferences("MODE",MODE_PRIVATE);
         SharedPreferences.Editor edit=sh.edit();
         edit.putString("mode", String.valueOf(k));
-        edit.commit();
+        edit.apply();
     }
     @Override
     public void onBackPressed()
@@ -201,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
     public void isInternetAvailable() {
-       try {
+        try {
                 final String command = "ping -c 1 google.com";
                 boolean k= Runtime.getRuntime().exec(command).waitFor() == 0;
                 if(!k)
@@ -210,11 +212,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!run) {
                     stuff_to_do();
+                    Log.d("oncreate","oncreate");
                 }
         } catch (Exception e) {
             internet_check_dialog();
         }
-      //stuff_to_do();
     }
     public void onclick() //list element click
     {
@@ -245,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
     static public void create_list()
     {
-        myAdapter adapter=new myAdapter(variables.activity, variables.states,variables.death,variables.recovered,
+        adapter=new myAdapter(variables.activity, variables.states,variables.death,variables.recovered,
                 variables.confirmed,variables.active,variables.confirmed_inc,variables.death_inc,variables.recovered_inc);
         adapter.notifyDataSetChanged();
         variables.main_list.setAdapter(adapter);
