@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".world" />
-        <activity android:name=".district" />
-        <activity android:name=".Splash" />
-        <activity android:name=".MainActivity"
+        <activity android:name=".activities.world" />
+        <activity android:name=".activities.district" />
+        <activity android:name=".activities.Splash" />
+        <activity android:name=".activities.MainActivity"
             android:configChanges="uiMode">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

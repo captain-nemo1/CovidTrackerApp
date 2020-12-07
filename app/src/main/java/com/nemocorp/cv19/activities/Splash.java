@@ -1,15 +1,15 @@
-package com.nemocorp.cv19;
+package com.nemocorp.cv19.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.nemocorp.cv19.R;
 
 public class Splash extends AppCompatActivity {
 
@@ -34,7 +34,7 @@ public class Splash extends AppCompatActivity {
     public void onResume()
     {
         super.onResume();
-        if(!variables.seen)variables.seen=true;
+        if(!MainActivity.seen)MainActivity.seen=true;
         else
             finish();
     }
