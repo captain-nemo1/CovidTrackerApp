@@ -2,10 +2,14 @@ package com.nemocorp.cv19;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 public class Splash extends AppCompatActivity {
 
@@ -22,6 +26,9 @@ public class Splash extends AppCompatActivity {
                 finish();
             }
         }, TIME_OUT);
+        ImageView logo=findViewById(R.id.imageView);
+        Animation anim_logo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.splash_anim);
+        logo.startAnimation(anim_logo);
     }
     @Override
     public void onResume()
