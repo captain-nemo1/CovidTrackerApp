@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<androidx.appcompat.widget.Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    app:collapseIcon="@drawable/back"
-    android:id="@+id/toolbar">
-    <RelativeLayout
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/mode"
-            android:onClick="mode"
-            android:background="@drawable/night"
-            android:layout_alignParentStart="true"/>
-        <TextView
-            android:id="@+id/logo1"
-            android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        app:collapseIcon="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/logo1"
-            android:paddingLeft="45dp"
-            android:textColor="@color/logo"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:singleLine="true"
-            app:autoSizeTextType="uniform" />
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp">
 
-    </RelativeLayout>
+            <ImageButton
+                android:id="@+id/mode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/night"
+                android:onClick="mode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/logo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="45dp"
+                android:singleLine="true"
+                android:text="@string/logo1"
+                android:textColor="@color/logo"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
     <ListView
-        android:layout_below="@id/toolbar"
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_above="@id/bottom_navigation"
-        android:divider="@null">
+        android:layout_height="0dp"
+        android:divider="@null"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
     </ListView>
 
@@ -52,14 +68,15 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/bottom_corner"
         android:elevation="8dp"
         app:itemBackground="@color/white"
-        android:background="@drawable/bottom_corner"
         app:itemIconTint="@drawable/icon_tint"
         app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_view"/>
-</RelativeLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_view" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Group;
 import androidx.core.view.MenuItemCompat;
 
 import android.app.Activity;
@@ -27,15 +29,16 @@ import java.util.List;
 public class world extends AppCompatActivity {
     BottomNavigationView bv;
     static Activity world_activity;
-    static RelativeLayout loading_layout;
+    static ConstraintLayout loading_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_world);
         Toolbar yourToolbar=findViewById(R.id.toolbar);
         setSupportActionBar(yourToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         variables.world_list=findViewById(R.id.list);
-        loading_layout=findViewById(R.id.loading);
+        loading_layout=findViewById(R.id.loading_layout);
         loading(); //shows loading symbol if list not yet made else shows list
         world_activity =this;
         create_list();
